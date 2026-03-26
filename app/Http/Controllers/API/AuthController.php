@@ -10,25 +10,25 @@ use Illuminate\Validation\Rules\Password;
 
 class AuthController extends Controller
 {
-    public function SignUp(Request $req)
+    public function SignUp(Request $request)
     {
-        $userValidate = Validator::make($req->all(), [
+        $validator = Validator::make($request->all(), [
             "full_name" => ['required'],
             "email" => ['required', 'email', 'unique:users,email'],
             "password" => ['required', Password::min(6)->mixedCase()->letters()->numbers()->symbols(), 'confirmed'],
         ]);
-        if ($userValidate->fails()) {
+        if ($validator->fails()) {
             return response()->json([
                 'success' => false,
                 'message' => 'Validation failed',
-                'errors' => $userValidate->errors()
+                'errors' => $validator->errors()
             ], 422);
         }
         try {
             $user = User::create([
-            "full_name" => $req->full_name,
-            "email" => $req->email,
-            "password" => $req->password,
+            "full_name" => $request->full_name,
+            "email" => $request->email,
+            "password" => $request->password,
         ]);
             return response()->json([
                 'success' => true,
