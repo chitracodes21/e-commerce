@@ -43,7 +43,7 @@ class AuthController extends Controller
             ],500);
         }
     }
-  protected function Login(Request $request){
+  public function Login(Request $request){
     $validator = Validator::make($request->all(), [
             "email" => ['required', 'email'],
             "password" => ['required','confirmed'],
