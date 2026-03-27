@@ -43,10 +43,17 @@ class AuthController extends Controller
             ],500);
         }
     }
-  protected function login(Request $request){
+  protected function Login(Request $request){
     $validator = Validator::make($request->all(), [
             "email" => ['required', 'email'],
             "password" => ['required','confirmed'],
         ]);
+        if($validator->fails()){
+            return response()->json([
+                'success' => false,
+                'message' => 'Validation failed',
+                'errors' => $validator->errors()
+            ],422);
+        }
   }
 }
