@@ -4,20 +4,23 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    protected function getFindOrFail($id)
+    {
+        return Product::with("category")->findOrFail($id);
+    }
+
     public function index()
     {
         $products = Product::with('category')->get();
         return response()->json([
             "status" => true,
-            "message" => "All Products",
+            "message" => "Products fetched successfully!",
             "products" => $products
         ], 200);
     }
@@ -27,34 +30,36 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $productValidate = Validator::make($request->all(), [
-            "name" => ['required'],
-            "price" => ['required'],
-            "slug" => ['required'],
-            "description" => ['required'],
+        $validate = Validator::make($request->all(), [
+            "name" => ['required' | 'string'],
+            "price" => ['required' | 'numeric'],
+            "slug" => ['required' | 'string'],
+            "description" => ['required' | 'string'],
             'product_img_path' => ['required'],
             'category_id' => ['required']
         ]);
-        if ($productValidate->fails()) {
+        if ($validate->fails()) {
             return response()->json([
                 "status" => false,
-                "message" => "Validation was failed!",
-                "errors" => $productValidate->errors()
+                "message" => "Validation failed",
+                "errors" => $validate->errors()
             ]);
         }
-        $product = Product::create([
-            "name" => $request->name,
-            "price" => $request->price,
-            "slug" => $request->slug,
-            "description" => $request->description,
-            "product_img_path" => $request->product_img_path,
-            "category_id" => $request->category_id
-        ]);
-        return response()->json([
-            "status" => true,
-            "message" => "Successfully create product item.",
-            "product" => $product
-        ], 201);
+        try {
+            $product = Product::create($validate->validated());
+            return response()->json([
+                "status" => true,
+                "message" => "Product created successfully!",
+                "product" => $product
+            ], 201);
+        } catch (Exception $e) {
+            return response()->json([
+                "status" => false,
+                "message" => "Server error occurred",
+                "error" => $e->getMessage(),
+                "error line no. " => $e->getLine()
+            ], 500);
+        }
     }
 
     /**
@@ -62,18 +67,12 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        $product = Product::with("category")->find($id);
-        if (!$product) {
-            return response()->json([
-                "status" => false,
-                "message" => "Product not found",
-            ], 404);
-        }
+        $product = $this->getFindOrFail($id);
         return response()->json([
             "status" => true,
-            "message" => "Successfully fetch product.",
+            "message" => "Product fetched successfully!",
             "product" => $product
-        ],200);
+        ], 200);
     }
 
     /**
@@ -81,7 +80,28 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $product = $this->getFindOrFail($id);
+        $validate = Validator::make($request->all(), [
+            "name" => ['required'],
+            "price" => ['required'],
+            "slug" => ['required'],
+            "description" => ['required'],
+            'product_img_path' => ['required'],
+            'category_id' => ['required']
+        ]);
+        if ($validate->fails()) {
+            return response()->json([
+                "status" => false,
+                "message" => "Validation failed",
+                "errors" => $validate->errors()
+            ]);
+        }
+        $product->update($validate->validated());
+        return response()->json([
+            "status" => true,
+            "message" => "Product successfully updated",
+            "product" => $product,
+        ], 200);
     }
 
     /**
@@ -89,6 +109,13 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = $this->getFindOrFail($id);
+        $product->delete();
+        if ($product) {
+            return response()->json([
+                "status" => true,
+                "message" => "Product deleted successfully!",
+            ], 200);
+        }
     }
 }
