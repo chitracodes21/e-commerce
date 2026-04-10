@@ -74,7 +74,7 @@ class AdminController extends Controller
         } catch (\Exception $e) {
             return response()->json([
                 "status" => false,
-                "message" => "Server error occurred",
+                "message" => "Something went to wrong!",
                 "error" => $e->getMessage(),
                 "error line no. " => $e->getLine()
             ], 500);

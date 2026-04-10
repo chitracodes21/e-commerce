@@ -5,8 +5,9 @@ namespace App\Http\Requests;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\Rules\Password;
 
-class SaveProductRequest extends FormRequest
+class SignUpRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +25,9 @@ class SaveProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name" => ['required', 'string'],
-            "price" => ['required', 'numeric'],
-            "slug" => ['required', 'string'],
-            "description" => ['required', 'string'],
-            'product_img_path' => ['required'],
-            'category_id' => ['required']
+            "full_name" => ['required'],
+            "email" => ['required', 'email', 'unique:users,email'],
+            "password" => ['required', Password::min(6)->mixedCase()->letters()->numbers()->symbols(), 'confirmed'],
         ];
     }
     protected function failedValidation(Validator $validator)

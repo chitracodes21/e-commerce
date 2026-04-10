@@ -3,30 +3,18 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SignUpRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rules\Password;
 
 class AuthController extends Controller
 {
-    public function signUp(Request $request)
+    public function signUp(SignUpRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            "full_name" => ['required'],
-            "email" => ['required', 'email', 'unique:users,email'],
-            "password" => ['required', Password::min(6)->mixedCase()->letters()->numbers()->symbols(), 'confirmed'],
-        ]);
-        if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Validation failed',
-                'errors' => $validator->errors()
-            ], 422);
-        }
         try {
-            $user = User::create($validator->validated());
+            $user = User::create($request->validated());
             return response()->json([
                 'success' => true,
                 'message' => 'User registered successfully',
