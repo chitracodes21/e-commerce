@@ -2,12 +2,10 @@
 
 namespace App\Http\Requests\Auth;
 
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
+use App\Http\Requests\BaseFormRequest;
 use Illuminate\Validation\Rules\Password;
 
-class SignUpRequest extends FormRequest
+class SignUpRequest extends BaseFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,13 +27,5 @@ class SignUpRequest extends FormRequest
             "email" => ['required', 'email', 'unique:users,email'],
             "password" => ['required', Password::min(6)->mixedCase()->letters()->numbers()->symbols(), 'confirmed'],
         ];
-    }
-    protected function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(response()->json([
-            "status" => false,
-            "message" => "Validation failed",
-            "errors" => $validator->errors()
-        ], 422));
     }
 }
