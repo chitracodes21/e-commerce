@@ -1,9 +1,15 @@
-import React from 'react'
+import Footer from "./components/layout/Footer/Footer";
+import MainHeader from "./components/layout/Header/MainHeader";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <div>App</div>
-  )
+    <>
+      <MainHeader />
+      <Home/>
+      <Footer/>
+    </>
+  );
 }
 
-export default App
+export default App;
