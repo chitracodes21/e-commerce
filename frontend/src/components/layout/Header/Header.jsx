@@ -4,33 +4,33 @@ function Header() {
   return (
     <>
       <header>
-        <div class="container header">
-          <div class="logo">NovaMart</div>
+        <div className="container header">
+          <div className="logo">NovaMart</div>
 
-          <div class="search">
+          <div className="search">
             <input placeholder="Search products..." />
             <button>
-              <i class="fas fa-search"></i>
+              <i className="fas fa-search"></i>
             </button>
           </div>
 
-          <div class="actions">
-            <div class="icon">
-              <i class="far fa-user"></i>
+          <div className="actions">
+            <div className="icon">
+              <i className="far fa-user"></i>
             </div>
-            <div class="icon">
-              <i class="far fa-heart"></i>
-              <span class="badge">2</span>
+            <div className="icon">
+              <i className="far fa-heart"></i>
+              <span className="badge">2</span>
             </div>
-            <div class="icon">
-              <i class="fas fa-cart-shopping"></i>
-              <span class="badge">3</span>
+            <div className="icon">
+              <i className="fas fa-cart-shopping"></i>
+              <span className="badge">3</span>
             </div>
           </div>
         </div>
       </header>
       <nav>
-        <div class="container nav">
+        <div className="container nav">
           <a href="#">Home</a>
           <a href="#">Deals</a>
           <a href="#">New</a>
