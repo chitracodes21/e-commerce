@@ -1,15 +1,15 @@
 import React from "react";
-import HeroSlider from "../components/home/HeroSlider";
-import CategoryGrid from "../components/category/CategoryGrid";
-import Categories from "../components/home/Categories";
-import Products from "../components/home/Products";
+import HeroSlider from "../components/hero/HeroSlider";
+import Categories from "../components/category/Categories";
+import ProductList from "../components/product/ProductList";
+
 
 function Home() {
   return (
     <div className="container">
-      <HeroSlider />
+      <HeroSlider/>
       <Categories/>
-      <Products/>
+      <ProductList/>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 function Header() {
   return (
@@ -31,8 +32,8 @@ function Header() {
       </header>
       <nav>
         <div className="container nav">
-          <a href="#">Home</a>
-          <a href="#">Deals</a>
+          <Link to="/">Home</Link>
+          <Link to="about">About</Link>
           <a href="#">New</a>
           <a href="#">Categories</a>
           <a href="#">Contact</a>
