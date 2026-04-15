@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router";
-import Footer from "./components/layout/Footer/Footer";
-import MainHeader from "./components/layout/Header/MainHeader";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import MainHeader from "./components/layout/MainHeader";
+import Footer from "./components/layout/footer/Footer";
 
 function App() {
   return (
@@ -10,9 +10,9 @@ function App() {
       <MainHeader />
       <Routes>
         <Route index element={<Home />} />
-        <Route path="about" element={<About/>} />
+        <Route path="about" element={<About />} />
       </Routes>
-      <Footer />
+      <Footer/>
     </>
   );
 }

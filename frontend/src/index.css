@@ -350,7 +350,7 @@ nav {
 
 /* ================= FOOTER (BETTER DESIGN) ================= */
 footer {
-  margin-top: 60px;
+  margin-top: 0;
   background: #0f172a;
   color: #cbd5e1;
   padding: 50px 0 30px;
@@ -554,37 +554,12 @@ footer {
   }
 }
 
-/* Header and top bar - subtle fade */
 .topbar,
 header,
 nav {
   animation: fadeIn 0.5s ease forwards;
 }
 
-/* Main sections with staggered delays */
 .hero-slider {
   animation: fadeInUp 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
-}
-
-.categories {
-  animation: fadeInUp 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.1s forwards;
-  opacity: 0;
-}
-
-.products {
-  animation: fadeInUp 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.2s forwards;
-  opacity: 0;
-}
-
-footer {
-  animation: fadeInUp 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.3s forwards;
-  opacity: 0;
-}
-
-/* Ensure elements maintain final visibility after animation */
-.hero-slider,
-.categories,
-.products,
-footer {
-  animation-fill-mode: forwards;
 }
