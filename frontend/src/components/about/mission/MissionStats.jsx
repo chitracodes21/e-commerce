@@ -9,8 +9,8 @@ function MissionStats() {
   ];
   return (
     <div className="mission-stats">
-      {stats.map((stat) => {
-        return <StatItem statNumber={stat.value} statLabel={stat.label} />;
+      {stats.map((stat,i) => {
+        return <StatItem key={i} statNumber={stat.value} statLabel={stat.label} />;
       })}
     </div>
   );

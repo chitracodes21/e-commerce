@@ -3,7 +3,7 @@ import TestimonialLeft from "./TestimonialLeft";
 import TestimonialsRight from "./TestimonialsRight";
 
 function TestimonialSection() {
-  const [ref, isVisible] = useInView();
+  const [ref, isVisible] = useInView(0);
   return (
     <div
       ref={ref}

@@ -10,8 +10,8 @@ function PaymentIcons() {
   ];
   return (
     <div className="payment-icons">
-      {paymentIcons.map((payment) => {
-        return <i className={payment.icon}></i>;
+      {paymentIcons.map((payment,i) => {
+        return <i key={i} className={payment.icon}></i>;
       })}
     </div>
   );

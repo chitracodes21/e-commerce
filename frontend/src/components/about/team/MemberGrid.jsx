@@ -1,12 +1,14 @@
-import { teamMembers } from "../../../data/aboutData";
+
+import { teamMembers } from "../data/aboutData";
 import MemberCard from "./MemberCard";
 
 function MemberGrid() {
   return (
-    <div class="team-grid">
-      {teamMembers.map((member) => {
+    <div className="team-grid">
+      {teamMembers.map((member,i) => {
         return (
           <MemberCard
+          key={i}
             icon={member.icon}
             name={member.name}
             role={member.role}

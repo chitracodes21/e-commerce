@@ -2,13 +2,10 @@ import React from "react";
 import MissionContent from "./MissionContent";
 import MissionStats from "./MissionStats";
 import MissionImage from "./MissionImage";
-import { useInView } from "react-intersection-observer";
+import useInView from "../../../hooks/useInView";
 
 function MissionSection() {
-  const [ref, isVisible] = useInView({
-    triggerOnce:true,
-    threshold: 0.2
-  });
+  const [ref, isVisible] = useInView();
   return (
     <>
       <div

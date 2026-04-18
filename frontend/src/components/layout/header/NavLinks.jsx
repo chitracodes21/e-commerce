@@ -12,8 +12,12 @@ function NavLinks() {
   return (
     <nav>
       <div className="container nav">
-        {navLinks.map((link)=>{
-            return <Link to={link.to}>{link.label}</Link>
+        {navLinks.map((link, i) => {
+          return (
+            <Link key={i} to={link.to}>
+              {link.label}
+            </Link>
+          );
         })}
       </div>
     </nav>

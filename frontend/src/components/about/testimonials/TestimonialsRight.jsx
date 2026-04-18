@@ -1,6 +1,6 @@
 import React from "react";
 import CustomerReview from "./CustomerReview";
-import { customerReviews } from "../../../data/aboutData";
+import { customerReviews } from "../data/aboutData";
 
 function TestimonialsRight() {
   return (

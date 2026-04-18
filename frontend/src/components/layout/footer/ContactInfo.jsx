@@ -17,9 +17,9 @@ function ContactInfo() {
   ];
   return (
     <ul>
-      {contactInfo.map((info) => {
+      {contactInfo.map((info,i) => {
         return (
-          <li>
+          <li key={i}>
             <i className={info.icon}></i> {info.text}
           </li>
         );

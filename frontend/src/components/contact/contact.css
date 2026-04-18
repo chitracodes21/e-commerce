@@ -105,6 +105,7 @@
   text-align: center;
   border: 1px solid var(--border);
   transition: 0.25s;
+  cursor: pointer;
 }
 
 .info-card:hover {
@@ -292,29 +293,29 @@
   .hero-split {
     grid-template-columns: 1fr;
   }
-  
+
   .hero-left {
     padding: 48px 32px;
     text-align: center;
   }
-  
+
   .hero-left p {
     margin-left: auto;
     margin-right: auto;
   }
-  
+
   .hero-stats-row {
     justify-content: center;
   }
-  
+
   .hero-stat-item {
     text-align: center;
   }
-  
+
   .hero-left h1 {
     font-size: 2rem;
   }
-  
+
   .contact-form-section {
     grid-template-columns: 1fr;
   }
@@ -324,25 +325,70 @@
   .hero-left h1 {
     font-size: 1.8rem;
   }
-  
+
   .hero-stats-row {
     gap: 20px;
     flex-wrap: wrap;
   }
-  
+
   .hero-stat-number {
     font-size: 1.4rem;
   }
-  
+
   .faq-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .form-card {
     padding: 24px;
   }
-  
+
   .info-card {
     padding: 24px 16px;
+  }
+}
+
+.contact-hero {
+  animation: fadeInUp 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(8px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: fadeInLeft 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes fadeInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+  animation: fadeInRight 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes fadeInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

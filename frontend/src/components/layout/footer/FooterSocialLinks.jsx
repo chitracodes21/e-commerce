@@ -21,8 +21,8 @@ function FooterSocialLinks() {
   ];
   return (
     <div className="social-links">
-      {socialMediaLinks.map((link)=>{
-        return <a href={link.href}>
+      {socialMediaLinks.map((link,i)=>{
+        return <a key={i} href={link.href}>
         <i className={link.icon}></i>
       </a>
       })}
