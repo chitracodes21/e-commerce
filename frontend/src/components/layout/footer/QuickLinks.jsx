@@ -3,11 +3,11 @@ import FooterLinkList from "./FooterLinkList";
 
 function QuickLinks() {
   const quickLinks = [
-    { label: "About Us", href: "#" },
-    { label: "Contact Us", href: "#" },
-    { label: "Track Order", href: "#" },
-    { label: "Returns Policy", href: "#" },
-    { label: "FAQ", href: "#" },
+    { label: "About Us", href: "about" },
+    { label: "Contact Us", href: "contact" },
+    { label: "Careers", href: "careers" },
+    { label: "Sustainability", href: "sustainability" },
+    { label: "FAQ", href: "faq" },
   ];
   return (
     <div className="footer-col">
