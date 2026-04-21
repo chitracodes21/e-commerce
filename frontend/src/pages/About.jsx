@@ -33,9 +33,7 @@ function About() {
           />
         </div>
       </section>
-      <div className="container">
         <MissionSection />
-      </div>
       <InfoSection
         title={aboutValuesHeader.title}
         description={aboutValuesHeader.description}

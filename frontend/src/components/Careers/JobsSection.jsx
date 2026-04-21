@@ -5,7 +5,7 @@ import CareersList from "./CareersList";
 import useInView from "../../hooks/useInView";
 
 function JobsSection() {
-  const [ref, isVisible] = useInView();
+  const [ref, isVisible] = useInView(0.2);
   return (
     <div class="container">
       <div

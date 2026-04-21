@@ -3,7 +3,7 @@ import { contactAddress, contactEmail, contactPhone } from "../data/contactData"
 import ContactInfoCard from "./ContactInfoCard";
 
 function ContactInfoGrid() {
-  const [ref, isVisible] = useInView();
+  const [ref, isVisible] = useInView(0.2);
   return (
     <div
       ref={ref}

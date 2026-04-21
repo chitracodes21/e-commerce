@@ -5,19 +5,21 @@ import MissionImage from "./MissionImage";
 import useInView from "../../../hooks/useInView";
 
 function MissionSection() {
-  const [ref, isVisible] = useInView();
+  const [ref, isVisible] = useInView(0.2);
   return (
     <>
       <div
         ref={ref}
-        className={`mission-section ${isVisible ? "motion-fade-up" :""}`}
-        style={{ animationDelay: "0.3s"}}
+        className={`container ${isVisible ? "motion-fade-up" : ""}`}
+        style={{ animationDelay: "0.3s" }}
       >
-        <div className="mission-content">
-          <MissionContent />
-          <MissionStats />
+        <div ref={ref} className="mission-section">
+          <div className="mission-content">
+            <MissionContent />
+            <MissionStats />
+          </div>
+          <MissionImage />
         </div>
-        <MissionImage />
       </div>
     </>
   );
