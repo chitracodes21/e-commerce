@@ -9,6 +9,7 @@ function CareersList() {
         return (
           <JobCard
             key={job.id}
+            queryTitle={job.queryTitle}
             title={job.title}
             description={job.description}
             location={job.location}

@@ -4,10 +4,11 @@ import PerkCard from "./PerkCard";
 
 function PerksGrid() {
   return (
-    <div class="perks-grid">
-      {perksList.map((perk) => {
+    <div className="perks-grid">
+      {perksList.map((perk, i) => {
         return (
           <PerkCard
+            key={i}
             icon={perk.icon}
             title={perk.title}
             description={perk.description}

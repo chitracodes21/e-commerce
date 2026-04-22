@@ -7,7 +7,7 @@ import useInView from "../../hooks/useInView";
 function JobsSection() {
   const [ref, isVisible] = useInView(0.2);
   return (
-    <div class="container">
+    <div className="container">
       <div
         ref={ref}
         className={`jobs-section ${isVisible ? "motion-fade-up" : ""}`}

@@ -5,8 +5,8 @@ import { careerHeroContent, careerHeroRightData, careerStats } from '../shared/h
 
 function CareersHero() {
   return (
-    <section class="careers-hero">
-        <div class="hero-split">
+    <section className="careers-hero">
+        <div className="hero-split">
           <HeroLeftContent
             title={careerHeroContent.title}
             description={careerHeroContent.description}
